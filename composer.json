@@ -1,0 +1,58 @@
+{
+    "name": "dept-of-scrapyard-robotics/sdl3-display",
+    "description": "Drive SDL3-powered Windows with PHP",
+    "license": "MIT",
+    "homepage": "https://scrapyard-io.projectsaturnstudios.com",
+    "version": "0.5.0",
+    "authors": [
+        {
+            "name": "Angel Gonzalez",
+            "email": "angel@projectsaturnstudios.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "ext-sdl3": "^0.5.0",
+        "microscrap/sdl3": "^0.5.0",
+        "bare-metal/displays": "^0.5.0",
+        "bare-metal/contracts": "^0.5.0",
+        "scrapyard-io/nuts-and-bolts": "^0.5.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^4",
+        "scrapyard-io/framework": "^0.5.0"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../scrapyard-io/framework",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../../microscrap/sdl3",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DeptOfScrapyardRobotics\\Displays\\SDL3\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DeptOfScrapyardRobotics\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev"
+}
