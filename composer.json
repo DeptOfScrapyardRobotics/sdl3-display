@@ -19,8 +19,7 @@
         "scrapyard-io/nuts-and-bolts": "^0.5.0"
     },
     "require-dev": {
-        "pestphp/pest": "^4",
-        "scrapyard-io/framework": "^0.5.0"
+        "pestphp/pest": "^4"
     },
     "autoload": {
         "psr-4": {
