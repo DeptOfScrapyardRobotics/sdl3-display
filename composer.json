@@ -22,22 +22,6 @@
         "pestphp/pest": "^4",
         "scrapyard-io/framework": "^0.5.0"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../../scrapyard-io/framework",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../../microscrap/sdl3",
-            "options": {
-                "symlink": true
-            }
-        }
-    ],
     "autoload": {
         "psr-4": {
             "DeptOfScrapyardRobotics\\Displays\\SDL3\\": "src/"
