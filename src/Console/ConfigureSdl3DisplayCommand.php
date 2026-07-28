@@ -6,6 +6,8 @@ use Fabricate\Console\Command;
 use Fabricate\Filesystem\Filesystem;
 use Symfony\Component\Console\Attribute\AsCommand;
 
+use function Laravel\Prompts\confirm;
+
 #[AsCommand(name: 'config:sdl3-display')]
 class ConfigureSdl3DisplayCommand extends Command
 {
@@ -32,6 +34,7 @@ class ConfigureSdl3DisplayCommand extends Command
 
         if ($this->hasWindowedEntry() && ! $this->option('force')) {
             $this->components->info('Windowed SDL3 display configuration already exists.');
+            $this->offerToSetMainDisplay();
 
             return self::SUCCESS;
         }
@@ -43,8 +46,31 @@ class ConfigureSdl3DisplayCommand extends Command
         }
 
         $this->components->info('Added default [windowed.sdl3] display configuration.');
+        $this->offerToSetMainDisplay();
 
         return self::SUCCESS;
+    }
+
+    protected function offerToSetMainDisplay(): void
+    {
+        if (! $this->input->isInteractive()) {
+            return;
+        }
+
+        $application = $this->getApplication();
+
+        if (is_null($application) || ! $application->has('config:main-display')) {
+            return;
+        }
+
+        if (! confirm('Would you like to set the main display now?', default: true)) {
+            return;
+        }
+
+        $this->call('config:main-display', [
+            'display' => 'sdl3',
+            '--force' => true,
+        ]);
     }
 
     protected function hasWindowedEntry(): bool
